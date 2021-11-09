@@ -27,7 +27,7 @@ function passwordOptions() {
 
   var hasNumbers = confirm("Include numbers")
   // if (hasNumbers) {
-  //   Math.floor(Math.random() * 128);
+  // 
   // }
   var optionsPassword = {
     passwordLength: passwordLength,
@@ -38,6 +38,16 @@ function passwordOptions() {
     
   }
   return optionsPassword
+}
+
+function getRandom() {
+  var randomIndex =   Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex]
+  return randomElement
+}
+function generatePassword() {
+  valid = [];
+  password = [];
 }
 // Assignment Code creates button to generate password on screen
 var generateBtn = document.querySelector("#generate");
@@ -50,10 +60,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-function generatePassword() {
-  valid = [];
-  password = [];
-}
+
 generateBtn.addEventListener("click", writePassword);
 
 
