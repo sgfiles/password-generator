@@ -24,11 +24,8 @@ function passwordOptions() {
   var hasSpecialCharacter = confirm("Include special Character")
   var hasUpperCase = confirm("Include upperCase")
   var hasLowerCase = confirm("Include lowerCase")
-
   var hasNumbers = confirm("Include numbers")
-  // if (hasNumbers) {
-  // 
-  // }
+ 
   var optionsPassword = {
     passwordLength: passwordLength,
     hasSpecialCharacter: hasSpecialCharacter,
@@ -46,8 +43,36 @@ function getRandom() {
   return randomElement
 }
 function generatePassword() {
-  valid = [];
-  password = [];
+ var options = passwordOptions()
+ var results = []
+ var possibleCharacters = []
+ var essentialCharacters = []
+if (options.hasSpecialCharacter) {
+  possibleCharacters = possibleCharacters.concat(specialCharacter)
+  essentialCharacters.push(getRandom(specialCharacter))
+}
+if (options.hasLowerCase) {
+  possibleCharacters = possibleCharacters.concat(hasLowerCase)
+  essentialCharacters.push(getRandom(hasLowerCase))
+}
+if (options.hasUpperCase) {
+  possibleCharacters = possibleCharacters.concat(hasUpperCase)
+  essentialCharacters.push(getRandom(hasUpperCase))
+}
+if (options.hasNumbers) {
+  possibleCharacters = possibleCharacters.concat(hasNumbers)
+  essentialCharacters.push(getRandom(hasNumbers))
+}
+for (let i = 0;  i < options.length; i++) {
+  var possibleSingleCharacter = getRandom(possibleCharacters)
+  results.push(possibleSingleCharacter)
+  
+}
+for (let i = 0; i < essentialCharacters.length; i++) {
+  results[i] = essentialCharacters[i]
+  
+}
+return results.join('')
 }
 // Assignment Code creates button to generate password on screen
 var generateBtn = document.querySelector("#generate");
